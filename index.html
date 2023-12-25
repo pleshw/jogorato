@@ -269,6 +269,13 @@
                     return;
                 }
 
+                targetByWrongAnswerSongAssigned.forEach((sound) => {
+                    if (sound.pause) {
+                        sound.pause();
+                        sound.currentTime = 0;
+                    }
+                });
+
                 targetByWrongAnswerSongAssigned.get(target).play();
             },
             onUnpin: (draggable, target) => {
