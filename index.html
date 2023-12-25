@@ -262,19 +262,20 @@
                     return;
                 }
 
-                if (target.id === attributeKeyTo) {
-                    target.querySelector('img').src = './tests/assets/ratinho.jpg';
-                    target.classList.add('open');
-                    audioComponent.play();
-                    return;
-                }
-
                 targetByWrongAnswerSongAssigned.forEach((sound) => {
                     if (sound.pause) {
                         sound.pause();
                         sound.currentTime = 0;
                     }
                 });
+
+                if (target.id === attributeKeyTo) {
+                    target.querySelector('img').src = './tests/assets/ratinho.jpg';
+                    target.classList.add('open');
+                    audioComponent.play();
+                    alreadyGuessed = true;
+                    return;
+                }
 
                 targetByWrongAnswerSongAssigned.get(target).play();
             },
